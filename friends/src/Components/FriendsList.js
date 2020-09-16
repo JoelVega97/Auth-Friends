@@ -6,9 +6,8 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialValues = {
   name: "",
-  email: "",
   age: "",
-  id: "",
+  email: "",
 };
 
 export default function FriendsList() {
@@ -26,9 +25,7 @@ export default function FriendsList() {
   const postNewFriend = (newFriend) => {
     axiosWithAuth()
       .post("/api/friends", newFriend)
-      .then((res) => {
-        console.log(friends);
-      })
+      .then((res) => {})
       .catch((err) => {
         console.log(err);
       })
@@ -48,15 +45,13 @@ export default function FriendsList() {
       name: values.name,
       email: values.email,
       age: values.age,
-      id: values.id,
     };
     postNewFriend(newFriend);
-    debugger;
   };
 
   useEffect(() => {
     getFriends();
-  }, []);
+  }, [friends]);
 
   return (
     <>

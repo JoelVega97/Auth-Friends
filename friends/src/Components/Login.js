@@ -22,11 +22,9 @@ export default function Login(props) {
       .then((res) => {
         localStorage.setItem("token", res.data.payload);
         props.history.push("/friends");
-        debugger;
       })
       .catch((err) => {
         console.log("Error");
-        debugger;
       });
   };
 
