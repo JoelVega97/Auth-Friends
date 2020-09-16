@@ -1,6 +1,5 @@
 //{ username: 'Lambda School', password: 'i<3Lambd4' }
 import React, { useState } from "react";
-import axios from "axios";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -21,7 +20,6 @@ export default function Login() {
     axiosWithAuth()
       .post("/api/login", { username: "Lambda School", password: "i<3Lambd4" })
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.data.payload);
       })
       .catch((err) => {
