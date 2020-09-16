@@ -1,10 +1,10 @@
 import React from "react";
-import logo from "./logo.svg";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import Opener from "./Components/Opener";
 import Login from "./Components/Login";
 import FriendsList from "./Components/FriendsList";
+import PrivateRoute from "./Components/ProtectedRoute";
 
 import "./App.css";
 
@@ -18,7 +18,7 @@ function App() {
           <Link to="/friends">Friends</Link>
         </div>
         <Switch>
-          <Route exact path="/friends" component={FriendsList} />
+          <PrivateRoute exact path="/friends" component={FriendsList} />
           <Route path="/login" component={Login} />
           <Route exact path="/" component={Opener} />
         </Switch>

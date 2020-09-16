@@ -8,22 +8,25 @@ const initialValues = {
   password: "",
 };
 
-export default function Login() {
+export default function Login(props) {
   const [values, setValues] = useState(initialValues);
 
-  const change = (name, value) => {
-    setValues({ [name]: value });
+  const change = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const login = (evt) => {
     evt.preventDefault();
     axiosWithAuth()
-      .post("/api/login", { username: "Lambda School", password: "i<3Lambd4" })
+      .post("/api/login", values)
       .then((res) => {
         localStorage.setItem("token", res.data.payload);
+        props.history.push("/friends");
+        debugger;
       })
       .catch((err) => {
         console.log("Error");
+        debugger;
       });
   };
 
